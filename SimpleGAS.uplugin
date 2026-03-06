@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SimpleGAS",
+	"Description": "A simple Gameplay Ability System",
+	"Category": "Other",
+	"CreatedBy": "Afissard",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SimpleGAS",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

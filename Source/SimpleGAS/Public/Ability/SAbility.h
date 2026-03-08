@@ -7,6 +7,7 @@
 #include "UObject/Object.h"
 #include "SAbility.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogGAS_Ability, Log, All);
 
 UCLASS()
 class SIMPLEGAS_API USAbility : public UObject

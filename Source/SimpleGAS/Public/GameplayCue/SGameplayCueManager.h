@@ -8,9 +8,8 @@
 #include "Subsystems/WorldSubsystem.h"
 #include "SGameplayCueManager.generated.h"
 
-/**
- * 
- */
+DECLARE_LOG_CATEGORY_EXTERN(LogGAS_GameplayCueManager, Log, All);
+
 UCLASS()
 class SIMPLEGAS_API USGameplayCueManager : public UWorldSubsystem
 {

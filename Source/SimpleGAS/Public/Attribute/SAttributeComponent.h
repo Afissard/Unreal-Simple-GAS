@@ -8,6 +8,8 @@
 #include "Components/ActorComponent.h"
 #include "SAttributeComponent.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogGAS_AttributeComponent, Log, All);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttributeChangedDelegate, float, NewValue, float, Delta);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )

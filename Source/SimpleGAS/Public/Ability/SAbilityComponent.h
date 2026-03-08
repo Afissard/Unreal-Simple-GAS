@@ -8,6 +8,8 @@
 #include "Ability/SAbility.h"
 #include "SAbilityComponent.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogGAS_AbilityComponent, Log, All);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityAdded, FGameplayTag, AbilityTag, USAbility*, Ability);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityRemoved, FGameplayTag, AbilityTag, USAbility*, Ability);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityExecuted, FGameplayTag, AbilityTag, USAbility*, Ability);

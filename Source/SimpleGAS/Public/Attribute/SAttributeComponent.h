@@ -22,7 +22,7 @@ public:
 	USAttributeComponent();
 
 	// Use the lightweight struct for attribute storage
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Attributes")
 	TMap<FGameplayTag, FSAttributeData> AttributeDataMap;
 
 	// Map of delegates per attribute tag. Created on demand via FindOrAdd.

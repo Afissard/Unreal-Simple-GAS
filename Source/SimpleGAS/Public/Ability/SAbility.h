@@ -9,7 +9,7 @@
 
 DECLARE_LOG_CATEGORY_EXTERN(LogGAS_Ability, Log, All);
 
-UCLASS()
+UCLASS(Blueprintable, EditInlineNew)
 class SIMPLEGAS_API USAbility : public UObject
 {
 	GENERATED_BODY()
@@ -32,7 +32,18 @@ public:
 	FGameplayTag CooldownTag;
 
 public:
+	UFUNCTION(BlueprintCallable, Category = "Ability")
 	bool BCanActivate(AActor* Owner) const;
 	
-	virtual void CommitExecute(AActor* Owner); // can be overridden for more complex logic, but by default it just applies attribute costs
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	void CommitExecute(AActor* Owner);
+	
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	virtual void Initialize(FGameplayTag InAbilityTag, TMap<FGameplayTag, float> InAttributeCosts, float InCoolDown);
+	
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	virtual void PlayEffects(AActor* Owner)
+	{
+		// Nothing by default, but can be overridden to play particle/sound effects or other custom logic when the ability is executed
+	}
 };

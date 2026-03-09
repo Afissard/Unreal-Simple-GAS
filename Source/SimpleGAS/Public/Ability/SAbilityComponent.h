@@ -27,7 +27,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ability")
 	FGameplayTagContainer OwnedTags;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ability")
 	TMap<FGameplayTag, TObjectPtr<USAbility>> Abilities;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Ability")

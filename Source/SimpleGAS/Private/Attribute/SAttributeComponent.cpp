@@ -43,7 +43,7 @@ void USAttributeComponent::SetAttributeValue(const FGameplayTag AttributeTag, fl
 			AttributeValue = AttributeDataMap[AttributeTag].MinValue;
 		}
 		
-		UE_LOG(LogGAS_AttributeComponent, Verbose, TEXT("SetAttributeValue: Setting %s from %f to %f"), *AttributeTag.ToString(), OldValue, AttributeValue);
+		UE_LOG(LogGAS_AttributeComponent, Log, TEXT("SetAttributeValue: Setting %s from %f to %f"), *AttributeTag.ToString(), OldValue, AttributeValue);
 		AttributeDataMap[AttributeTag].CurrentValue = AttributeValue;
 
 		if (const float Delta = AttributeValue - OldValue; Delta != 0.f)
@@ -70,7 +70,7 @@ void USAttributeComponent::ApplyAttributeChange(const FGameplayTag AttributeTag,
 {
 	if (AttributeDataMap.Contains(AttributeTag))
 	{
-		UE_LOG(LogGAS_AttributeComponent, Verbose, TEXT("ApplyAttributeChange: Applying delta %f to %s"), DeltaValue, *AttributeTag.ToString());
+		UE_LOG(LogGAS_AttributeComponent, Log, TEXT("ApplyAttributeChange: Applying delta %f to %s"), DeltaValue, *AttributeTag.ToString());
 		SetAttributeValue(AttributeTag, GetAttributeValue(AttributeTag) + DeltaValue);
 	} else 
 	{
@@ -80,7 +80,7 @@ void USAttributeComponent::ApplyAttributeChange(const FGameplayTag AttributeTag,
 
 FAttributeChangedDelegate& USAttributeComponent::RegisterAttributeChange(FGameplayTag AttributeTag)
 {
-	UE_LOG(LogGAS_AttributeComponent, Verbose, TEXT("RegisterAttributeChange: Registering delegate for %s"), *AttributeTag.ToString());
+	UE_LOG(LogGAS_AttributeComponent, Log, TEXT("RegisterAttributeChange: Registering delegate for %s"), *AttributeTag.ToString());
 	return AttributeChangedDelegates.FindOrAdd(AttributeTag);
 }
 

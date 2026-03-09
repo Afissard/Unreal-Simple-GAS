@@ -28,7 +28,7 @@ bool USAbility::BCanActivate(AActor* Owner) const
 				UE_LOG(LogGAS_Ability, Log, TEXT("BCanActivate: Still on cooldown (%.2f seconds remaining)"), CooldownRemaining);
 				return false; // Still on cooldown
 			}
-			UE_LOG(LogGAS_Ability, Log, TEXT("BCanActivate: Cooldown expired"));
+			UE_LOG(LogGAS_Ability, Log, TEXT("BCanActivate: Cooldown = 0, ability is ready"));
 		}
 		
 		UE_LOG(LogGAS_Ability, Log, TEXT("BCanActivate: Checking attribute costs"));
@@ -73,6 +73,8 @@ void USAbility::CommitExecute(AActor* Owner)
 			AttributeComp->ApplyAttributeChange(AttributeTag, -CostValue);
 		}
 		
+		PlayEffects(Owner);
+		
 		// Apply cooldown
 		UE_LOG(LogGAS_Ability, Log, TEXT("CommitExecute: Applying cooldown"));
 		AttributeComp->ApplyAttributeChange(CooldownTag, CooldownDuration);
@@ -113,4 +115,13 @@ void USAbility::CommitExecute(AActor* Owner)
 	{
 		UE_LOG(LogGAS_Ability, Error, TEXT("CommitExecute: Owner has no AttributeComponent"));
 	}
+}
+
+void USAbility::Initialize(const FGameplayTag InAbilityTag, const TMap<FGameplayTag, float> InAttributeCosts, const float InCoolDown)
+{
+	AbilityTag = InAbilityTag;
+	AttributeCosts = InAttributeCosts;
+	CooldownDuration = InCoolDown;
+	
+	UE_LOG(LogGAS_Ability, Log, TEXT("Initialized ability with Tag: %s"), *AbilityTag.ToString());
 }
